@@ -68,16 +68,16 @@ namespace TimeFollowingApp.backend.Controllers
             return Ok(maxActivityTime);
         }
 
-        private ActivityModel[] CombineSameId(ActivityModel[] activitiesList)
+
+        [HttpGet("get-activity-by-date")]
+        public ActionResult<ActivityModel[]> GetActivityByDate([FromQuery] DateTime dateToFind)
         {
-            ActivityModel[] activitiesCombined = (ActivityModel[])Array.Empty<object>();
+            ActivityModel[] activityToReturn = activities
+                    .Where(a => a.AchievementsByDate != null &&
+                                a.AchievementsByDate.Keys.Any(k => k.Date == dateToFind.Date))
+                    .ToArray();
 
-            foreach (ActivityModel activity in activitiesList)
-            {
-
-            }
-
-            return activitiesList;
+            return Ok(activityToReturn);
         }
     }
 }

@@ -17,7 +17,6 @@ const ShowActivities = () => {
             .then(data => setActivities(data))
             .catch(error => console.error('Error al conectar con C#:', error));
         console.log(activities);
-        console.log(isOrdered);
     }, [isOrdered]);
 
     useEffect(() => {

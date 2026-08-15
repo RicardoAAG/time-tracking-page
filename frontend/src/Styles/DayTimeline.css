@@ -1,0 +1,34 @@
+.timeline-container {
+  display: grid;
+  grid-template-rows: repeat(24, 1fr);
+  width: 33%;
+  height: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+.hour-slot {
+  border-right: 1px solid #e0e0e0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 4px;
+  position: relative;
+  transition: background-color 0.2s ease;
+  justify-content: left;
+}
+
+.hour-slot:last-child {
+  border-right: none;
+}
+
+.hour-slot:hover {
+  background-color: #e3f2fd; /* Highlight on hover */
+}
+
+.hour-label {
+  font-size: 15px;
+  color: #666;
+}

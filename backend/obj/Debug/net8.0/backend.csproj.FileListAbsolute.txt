@@ -31,3 +31,4 @@ C:\Users\super\Desktop\Coding\TimeFollowingPage\backend\obj\Debug\net8.0\refint\
 C:\Users\super\Desktop\Coding\TimeFollowingPage\backend\obj\Debug\net8.0\backend.pdb
 C:\Users\super\Desktop\Coding\TimeFollowingPage\backend\obj\Debug\net8.0\backend.genruntimeconfig.cache
 C:\Users\super\Desktop\Coding\TimeFollowingPage\backend\obj\Debug\net8.0\ref\backend.dll
+C:\Users\super\Desktop\Coding\TimeFollowingPage\backend\obj\Debug\net8.0\backend.sourcelink.json
