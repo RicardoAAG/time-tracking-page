@@ -1,0 +1,18 @@
+@backend_HostAddress = http://localhost:5299
+
+### Probar el nuevo controlador ActivityController
+GET {{backend_HostAddress}}/activity/
+Accept: application/json
+
+### Obtener las actividades ordenadas por tiempo
+GET {{backend_HostAddress}}/activity/ordered
+Accept: application/json
+
+### Obtener las actividades ordenadas por tiempo
+GET {{backend_HostAddress}}/activity/maxactivitytime
+Accept: application/json
+
+
+### (Opcional) Mantener la prueba del WeatherForecast si aún lo conservas
+GET {{backend_HostAddress}}/weatherforecast/
+Accept: application/json

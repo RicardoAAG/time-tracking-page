@@ -1,0 +1,13 @@
+.ActivityBar {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align:left;
+}
+
+.ActivityBar #outer {
+    border: 1px solid black;
+}
+
+.ActivityBar #inner {
+    background-color: green;
+    color: black;
+}
