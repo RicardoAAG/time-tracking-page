@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using TimeFollowingApp.backend.Models;
 
 namespace TimeFollowingApp.backend.Controllers
@@ -11,36 +12,49 @@ namespace TimeFollowingApp.backend.Controllers
     {
         private static IEnumerable<ActivityModel> activities = new[]{
             new ActivityModel
+        // public int Id { get; set; }
+        // public int ActivityType { get; set; }
+        // public string? Name { get; set; }
+        // public List<AchievementModel> AchievementsByDate { get; set; } = new();
+            // public int Id { get; set; }
+            // public int ActivityId { get; set; }
+            // public DateTimeOffset DateWhenDone { get; set; }
+            // public TimeSpan TimeDone { get; set; }
+            // public int TotalSeconds => (int)TimeDone.TotalSeconds;
+            // public List<string> Achievements { get; set; } = new();
+        // public TimeSpan TimeDone =>
+        //     TimeSpan.FromTicks(AchievementsByDate.Sum(a => a.TimeDone.Ticks));
+        // public int TotalMinutes => (int)TimeDone.TotalMinutes;
+        // public int TimesCompleted => AchievementsByDate.Count;
                 {Id = 1,
                 ActivityType = 1,
                 Name = "Working",
-                AchievementsByDate = new Dictionary<DateTimeOffset, List<string>>
+                AchievementsByDate = new List<AchievementModel>
                 {
-                    [DateTimeOffset.Now] = new()
+                    new AchievementModel
                     {
-                        "Finished model",
-                        "Showed model in webpage",
+                        Id = 1,
+                        ActivityId = 1,
+                        DateWhenDone = DateTimeOffset.UtcNow.AddDays(-1),
+                        TimeDone = TimeSpan.FromHours(1.5),
+                        Achievements = new List<string>
+                        {
+                            "Finished new model",
+                            "Fixed the new model bugs"
+                        }
                     },
-                    [DateTimeOffset.Now.AddDays(-1)] = new()
+                    new AchievementModel
                     {
-                        "Achieved retrieving max activity time"
+                        Id = 2,
+                        ActivityId = 1,
+                        DateWhenDone = DateTimeOffset.UtcNow.AddDays(-2),
+                        TimeDone = TimeSpan.FromHours(2),
+                        Achievements = new List<string>
+                        {
+                            "Improved HomePage",
+                        }
                     }
                 },
-                TimeDone = TimeSpan.FromHours(1.5)
-            },
-            new ActivityModel
-                {Id = 2,
-                ActivityType = 1,
-                Name = "Gaming",
-                AchievementsByDate = new Dictionary<DateTimeOffset, List<string>>
-                {
-                    [DateTimeOffset.Now] = new()
-                    {
-                        "Reached Diamond",
-                        "3 win Streak",
-                    }
-                },
-                TimeDone = TimeSpan.FromHours(2)
             }
         };
 
@@ -70,14 +84,24 @@ namespace TimeFollowingApp.backend.Controllers
 
 
         [HttpGet("get-activity-by-date")]
-        public ActionResult<ActivityModel[]> GetActivityByDate([FromQuery] DateTime dateToFind)
+        public ActionResult<AchievementModel[]> GetActivityByDate([FromQuery] DateTime dateToFind)
         {
-            ActivityModel[] activityToReturn = activities
-                    .Where(a => a.AchievementsByDate != null &&
-                                a.AchievementsByDate.Keys.Any(k => k.Date == dateToFind.Date))
-                    .ToArray();
+            Console.WriteLine($"{dateToFind}");
 
-            return Ok(activityToReturn);
+            var achievementsToReturn = new List<AchievementModel>();
+
+            foreach (ActivityModel activity in activities)
+            {
+                foreach (AchievementModel achievement in activity.AchievementsByDate)
+                {
+                    if (achievement.DateWhenDone.Date == dateToFind.Date)
+                    {
+                        achievementsToReturn.Add(achievement);
+                    }
+                }
+            }
+
+            return Ok(achievementsToReturn);
         }
     }
 }

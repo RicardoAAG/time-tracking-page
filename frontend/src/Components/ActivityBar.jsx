@@ -22,22 +22,21 @@ function ActivityBar({ activityMeasured, maxProgress }) {
             </div>
             {isOpened && (
                 <div id='info-section'>
-                    {activityMeasured.achievementsByDate &&
-                        Object.entries(activityMeasured.achievementsByDate).map(([dateStr, achievementsList], index) => (
+                    {activityMeasured.achievementsByDate.map((achievementObject, index) => (
                             <div key={index} style={{ marginBottom: '12px' }}>
-                                {/* Formateamos la fecha clave del diccionario */}
                                 <p style={{ margin: '4px 0' }}>
-                                    <strong>Fecha:</strong> {new Date(dateStr).toLocaleDateString()}
+                                    <strong>Fecha:</strong> {new Date(achievementObject.dateWhenDone).toLocaleDateString()}
                                 </p>
-
-                                {/* Iteramos sobre la lista de logros de esta fecha */}
                                 <ul>
-                                    {achievementsList && achievementsList.map((achievement, i) => (
-                                        <li key={i}>{achievement}</li>
+                                    {achievementObject.achievements.map((item, i) => (
+                                        <li key={i}>
+                                            {item}
+                                        </li>
                                     ))}
                                 </ul>
                             </div>
-                        ))}
+                        ))
+                    }
                 </div>
             )}
         </div>

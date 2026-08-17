@@ -3,19 +3,26 @@ import '../Styles/DayTimeline.css';
 
 function DayTimeline({ timelineDate }) {
 
-    const [activities, setActivities] = useState([]);
+    const [achievements, setAchievements] = useState([]);
     const [hours, setHours] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]);
+    if(timelineDate instanceof Date){
+        console.log("Es Date")
+    }else{
+        console.log("No es Date")
+    }
 
     const getDayLabel = (dateToLabel) => {
         const dayToReturn = dateToLabel.toDateString('es-ES', { weekday: 'long' });
-        console.log(timelineDate);
+        console.log(achievements);
         return dayToReturn;
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5299/activity/get-activity-by-date?date=${timelineDate}`)
+        const formattedDate = timelineDate.toISOString().split('T')[0];
+        console.log(formattedDate)
+        fetch(`http://localhost:5299/activity/get-activity-by-date?date=${formattedDate}`)
             .then(response => response.json())
-            .then(data => setActivities(data))
+            .then(data => setAchievements(data))
             .catch(error => console.error('Error al conectar con C#:', error));
     }, []);
 
