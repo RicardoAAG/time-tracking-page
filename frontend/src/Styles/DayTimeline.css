@@ -1,34 +1,70 @@
+.body {
+  border: 1px solid black;
+  width: 200px;
+  font-family: sans-serif;
+}
+
+.date-container {
+  border-bottom: 1px solid black;
+  padding: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
 .timeline-container {
-  display: grid;
-  grid-template-rows: repeat(24, 1fr);
-  width: 33%;
-  height: 100%;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  overflow: hidden;
+  display: flex;
+  position: relative;
+  flex-direction: column;
   background-color: #f9f9f9;
 }
 
-.hour-slot {
-  border-right: 1px solid #e0e0e0;
+.seleccionada {
+  position: absolute;
+  left: 70px;
+  right: 0;
+  pointer-events: none;
+  height: calc(2*(4.166%) + 2px);
+  background-color: red;
+  margin-top: -2px;
+}
+
+.selected-hour {
+  border: none;
+  height: 4px;
+  background-color: blue;
+}
+
+.hour-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  min-height: 48px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.hour-row:last-child {
+  border-bottom: none;
+}
+
+
+.hour-label-container {
+  border-right: 1px solid #ccc;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
-  padding-bottom: 4px;
-  position: relative;
-  transition: background-color 0.2s ease;
-  justify-content: left;
-}
-
-.hour-slot:last-child {
-  border-right: none;
-}
-
-.hour-slot:hover {
-  background-color: #e3f2fd; /* Highlight on hover */
+  padding-top: 4px;
+  background-color: #fafafa;
 }
 
 .hour-label {
-  font-size: 15px;
+  font-size: 13px;
   color: #666;
+}
+
+.hour-content-slot {
+  position: relative;
+  padding: 2px;
+}
+
+.hour-content-slot:hover {
+  background-color: #e3f2fd;
 }

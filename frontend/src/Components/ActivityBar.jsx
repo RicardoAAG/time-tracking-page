@@ -28,7 +28,7 @@ function ActivityBar({ activityMeasured, maxProgress }) {
                                     <strong>Fecha:</strong> {new Date(achievementObject.dateWhenDone).toLocaleDateString()}
                                 </p>
                                 <ul>
-                                    {achievementObject.achievements.map((item, i) => (
+                                    {achievementObject.description.map((item, i) => (
                                         <li key={i}>
                                             {item}
                                         </li>

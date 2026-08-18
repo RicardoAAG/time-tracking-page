@@ -37,7 +37,7 @@ namespace TimeFollowingApp.backend.Controllers
                         ActivityId = 1,
                         DateWhenDone = DateTimeOffset.UtcNow.AddDays(-1),
                         TimeDone = TimeSpan.FromHours(1.5),
-                        Achievements = new List<string>
+                        Description = new List<string>
                         {
                             "Finished new model",
                             "Fixed the new model bugs"
@@ -49,7 +49,7 @@ namespace TimeFollowingApp.backend.Controllers
                         ActivityId = 1,
                         DateWhenDone = DateTimeOffset.UtcNow.AddDays(-2),
                         TimeDone = TimeSpan.FromHours(2),
-                        Achievements = new List<string>
+                        Description = new List<string>
                         {
                             "Improved HomePage",
                         }
@@ -83,8 +83,8 @@ namespace TimeFollowingApp.backend.Controllers
         }
 
 
-        [HttpGet("get-activity-by-date")]
-        public ActionResult<AchievementModel[]> GetActivityByDate([FromQuery] DateTime dateToFind)
+        [HttpGet("get-achievement-by-date")]
+        public ActionResult<AchievementModel[]> GetActivityByDate([FromQuery] DateTimeOffset dateToFind)
         {
             Console.WriteLine($"{dateToFind}");
 

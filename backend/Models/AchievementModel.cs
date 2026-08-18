@@ -7,6 +7,6 @@ namespace TimeFollowingApp.backend.Models
         public DateTimeOffset DateWhenDone { get; set; }
         public TimeSpan TimeDone { get; set; }
         public int TotalSeconds => (int)TimeDone.TotalSeconds;
-        public List<string> Achievements { get; set; } = new();
+        public List<string> Description { get; set; } = new();
     }
 }

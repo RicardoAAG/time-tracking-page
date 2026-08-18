@@ -13,7 +13,7 @@ GET {{backend_HostAddress}}/activity/maxactivitytime
 Accept: application/json
 
 ### Obtener una actividad segun su dia
-GET {{backend_HostAddress}}/activity/get-activity-by-date
+GET {{backend_HostAddress}}/activity/get-achievement-by-date
 Accept: application/json
 
 ### (Opcional) Mantener la prueba del WeatherForecast si aún lo conservas

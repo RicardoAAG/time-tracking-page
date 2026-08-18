@@ -50,7 +50,6 @@ function Home() {
       .then(response => response.json())
       .then(data => setActivities(data))
       .catch(error => console.error('Error al conectar con C#:', error));
-    console.log(activities);
   }, []);
 
   useEffect(() => {
