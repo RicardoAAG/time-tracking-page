@@ -22,11 +22,11 @@ function Home() {
   ];
 
   const handlePrev = () => {
-    setOffset((prev) => prev + 3);
+    setOffset((prev) => prev + itemsToShow);
   };
 
   const handleNext = () => {
-    setOffset((prev) => prev - 3);
+    setOffset((prev) => prev - itemsToShow);
   };
 
   const chechIfStart = () => {
@@ -62,9 +62,11 @@ function Home() {
         &#10094; Prev
       </button>
       <div className="carousel-container">
-        {getVisibleItems().map((dates) => (
-          <DayTimeline timelineDate={dates} />
-        ))}
+        {/* {getVisibleItems().map((dates) => ( */}
+          <DayTimeline timelineDate={dates[0]} />
+          <DayTimeline timelineDate={dates[1]} />
+          <DayTimeline timelineDate={dates[2]} />
+        {/* ))}*/}
       </div>
       {!isStart && (
         <button className="navigation-button" onClick={handleNext}>

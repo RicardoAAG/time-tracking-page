@@ -16,6 +16,10 @@ Accept: application/json
 GET {{backend_HostAddress}}/activity/get-achievement-by-date
 Accept: application/json
 
+### Obtener la posicion de un logro dentro de la timeline
+GET {{backend_HostAddress}}/activity/calculate-timeline-position
+Accept: application/json
+
 ### (Opcional) Mantener la prueba del WeatherForecast si aún lo conservas
 GET {{backend_HostAddress}}/weatherforecast/
 Accept: application/json

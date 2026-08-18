@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useEffectEvent } from "react";
+import React, { useState, useEffect } from "react";
 import '../Styles/DayTimeline.css';
+import TimelineAchievement from "./TimelineAchievement";
 
 function DayTimeline({ timelineDate }) {
 
     const [achievements, setAchievements] = useState([]);
-    const [hours, setHours] = useState([12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]);
+    const [hours, setHours] = useState([24, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]);
 
     const getDayLabel = (dateToLabel) => {
         const dayToReturn = dateToLabel.toDateString('es-ES', { weekday: 'long' });
@@ -17,7 +18,11 @@ function DayTimeline({ timelineDate }) {
             .then(response => response.json())
             .then(data => setAchievements(data))
             .catch(error => console.error('Error al conectar con C#:', error));
-    }, []);
+    }, [timelineDate]);
+
+    // useEffect(() => {
+    //     console.log(achievements);
+    // }, [achievements]);
 
     return (
         <div className="body">
@@ -34,9 +39,9 @@ function DayTimeline({ timelineDate }) {
                         <div className="hour-content-slot"></div>
                     </div>
                 ))}
-                <div className="seleccionada" style={{ top: '40%' }}>
-                    <div className="selected-hour"/>
-                </div>
+                {achievements.length > 0 && achievements.map((achievementObject) => (
+                    <TimelineAchievement key={achievementObject.id} achievement = {achievementObject}/>
+                ))}
             </div>
         </div>
     );

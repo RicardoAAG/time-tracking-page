@@ -23,19 +23,23 @@ function ActivityBar({ activityMeasured, maxProgress }) {
             {isOpened && (
                 <div id='info-section'>
                     {activityMeasured.achievementsByDate.map((achievementObject, index) => (
-                            <div key={index} style={{ marginBottom: '12px' }}>
-                                <p style={{ margin: '4px 0' }}>
-                                    <strong>Fecha:</strong> {new Date(achievementObject.dateWhenDone).toLocaleDateString()}
-                                </p>
-                                <ul>
-                                    {achievementObject.description.map((item, i) => (
-                                        <li key={i}>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))
+                        <div key={index} style={{ marginBottom: '12px' }}>
+                            <p style={{ margin: '4px 0' }}>
+                                <strong>Fecha:</strong> {new Date(achievementObject.dateWhenDone).toLocaleDateString()}
+                                |
+                                <strong>Hora:</strong> {new Date(achievementObject.dateWhenDone).toLocaleTimeString()}
+                                |
+                                <strong>Tiempo Realizado:</strong> {achievementObject.timeDone}
+                            </p>
+                            <ul>
+                                {achievementObject.description.map((item, i) => (
+                                    <li key={i}>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))
                     }
                 </div>
             )}

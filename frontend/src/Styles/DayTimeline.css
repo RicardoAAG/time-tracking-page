@@ -23,7 +23,6 @@
   left: 70px;
   right: 0;
   pointer-events: none;
-  height: calc(2*(4.166%) + 2px);
   background-color: red;
   margin-top: -2px;
 }
