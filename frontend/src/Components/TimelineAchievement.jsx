@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import CurrentTimeMark from "./CurrentTimeMark";
 
 function TimelineAchievement({ achievement }) {
 
@@ -9,7 +10,7 @@ function TimelineAchievement({ achievement }) {
         const decimalHours = hours + minutes / 60 + seconds / 3600;
 
         // Redondea a 2 decimales
-        console.log(decimalHours * 100 / 100);
+        // console.log(decimalHours * 100 / 100);
         return Math.round(decimalHours * 100) / 100;
     };
 
@@ -17,7 +18,7 @@ function TimelineAchievement({ achievement }) {
 
     useEffect(() => {
         // console.log(new Date(achievement.dateWhenDone).toLocaleTimeString());
-        console.log(achievement.timeDone);
+        // console.log(achievement.timeDone);
         fetch(`http://localhost:5299/activity/calculate-timeline-position?achievementTime=${new Date(achievement.dateWhenDone).toLocaleTimeString()}`)
             .then(response => response.json())
             .then(data => setTimelinePosition(String(data) + "%"))

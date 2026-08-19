@@ -63,9 +63,14 @@ function Home() {
       </button>
       <div className="carousel-container">
         {/* {getVisibleItems().map((dates) => ( */}
-          <DayTimeline timelineDate={dates[0]} />
-          <DayTimeline timelineDate={dates[1]} />
+        <DayTimeline timelineDate={dates[0]} />
+        <DayTimeline timelineDate={dates[1]} />
+        {isStart && (
+          <DayTimeline timelineDate={dates[2]} isStart = {true}/>
+        )}
+        {!isStart && (
           <DayTimeline timelineDate={dates[2]} />
+        )}
         {/* ))}*/}
       </div>
       {!isStart && (
