@@ -18,21 +18,6 @@
   background-color: #f9f9f9;
 }
 
-.seleccionada {
-  position: absolute;
-  left: 70px;
-  right: 0;
-  pointer-events: none;
-  background-color: red;
-  margin-top: -2px;
-}
-
-.selected-hour {
-  border: none;
-  height: 4px;
-  background-color: blue;
-}
-
 .hour-row {
   display: grid;
   grid-template-columns: 70px 1fr;

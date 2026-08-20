@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import DayTimeline from '../Components/DayTimeline.jsx'
 import '../Styles/Home.css';
+import CreateNewAchievement from "../Components/CreateNewAchievement.jsx";
 
 function Home() {
   const [activities, setActivities] = useState([]);
+  const [startTimer, setStartTimer] = useState(false);
   const itemsToShow = 3;
   const [offset, setOffset] = useState(0);
   const [isStart, setIsStart] = useState(true)
@@ -66,17 +68,19 @@ function Home() {
         <DayTimeline timelineDate={dates[0]} />
         <DayTimeline timelineDate={dates[1]} />
         {isStart && (
-          <DayTimeline timelineDate={dates[2]} isStart = {true}/>
+          <DayTimeline timelineDate={dates[2]} isStart={true} isStartTimer={startTimer}/>
         )}
         {!isStart && (
           <DayTimeline timelineDate={dates[2]} />
         )}
         {/* ))}*/}
       </div>
-      {!isStart && (
+      {!isStart ? (
         <button className="navigation-button" onClick={handleNext}>
           Next &#10095;
         </button>
+      ) : (
+        <CreateNewAchievement onThisStart={() => setStartTimer(true)} onThisStop={() => setStartTimer(false)}/>
       )}
     </div>
   )

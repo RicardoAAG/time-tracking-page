@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CurrentTimeMark from "./CurrentTimeMark";
+import '../Styles/TimelineAchievement.css';
 
 function TimelineAchievement({ achievement }) {
 
@@ -27,8 +28,14 @@ function TimelineAchievement({ achievement }) {
 
     return (
         <div>
-            <div className="seleccionada" style={{ top: timelinePosition, height: `calc(${timelineDuration} * 4.166% + 2px)` }}>
+            <div className="time-container" style={{ top: `calc(${timelinePosition} - 1.5%)` }}>
+                {new Date(achievement.dateWhenDone).toLocaleTimeString()}
+            </div>
+            <div className="seleccionada" style={{ top: `calc(${timelinePosition} + 1px)`, height: `calc(${timelineDuration} * 4.166% + 2px)` }}>
                 <div className="selected-hour" />
+                <div className="duration-container">
+                    {achievement.timeDone}
+                </div>
             </div>
         </div>
     )

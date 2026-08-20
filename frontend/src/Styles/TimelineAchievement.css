@@ -1,0 +1,19 @@
+.seleccionada {
+    position: absolute;
+    left: 70px;
+    right: 0;
+    pointer-events: none;
+    background-color: red;
+    margin-top: -2px;
+}
+
+.selected-hour {
+    border: none;
+    height: 2px;
+    background-color: blue;
+}
+
+.time-container {
+    position: absolute;
+    left: 80px;
+}

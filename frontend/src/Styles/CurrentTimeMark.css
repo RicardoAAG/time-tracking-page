@@ -1,0 +1,19 @@
+.seleccionada-CT {
+    position: absolute;
+    left: 70px;
+    right: 0;
+    pointer-events: none;
+    background-color: red;
+    margin-top: -2px;
+}
+
+.selected-hour-CT {
+    border: none;
+    height: 2px;
+    background-color: blue;
+}
+
+.time-container-CT {
+    position: absolute;
+    left: 80px;
+}
