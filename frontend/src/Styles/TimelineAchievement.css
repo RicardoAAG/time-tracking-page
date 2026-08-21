@@ -3,17 +3,19 @@
     left: 70px;
     right: 0;
     pointer-events: none;
-    background-color: red;
+    background-color: grey;
     margin-top: -2px;
 }
 
 .selected-hour {
     border: none;
     height: 2px;
-    background-color: blue;
+    background-color: red;
 }
 
 .time-container {
     position: absolute;
     left: 80px;
+    transform: translateY(-100%);
+    margin-top: 4%;             
 }

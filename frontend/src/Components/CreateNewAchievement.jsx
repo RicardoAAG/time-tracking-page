@@ -7,7 +7,7 @@ function CreateNewAchievement({ onThisStart, onThisStop }) {
             <button onClick={() => onThisStart()}>
                 Empezar
             </button>
-            <button onClick={() => onThisStop()}>
+            <button onClick={() => {onThisStop(); }}>
                 Detener
             </button>
         </div>

@@ -31,7 +31,7 @@ function TimelineAchievement({ achievement }) {
             <div className="time-container" style={{ top: `calc(${timelinePosition} - 1.5%)` }}>
                 {new Date(achievement.dateWhenDone).toLocaleTimeString()}
             </div>
-            <div className="seleccionada" style={{ top: `calc(${timelinePosition} + 1px)`, height: `calc(${timelineDuration} * 4.166% + 2px)` }}>
+            <div className="seleccionada" style={{ top: `calc(${timelinePosition} + 0px)`, height: `calc(${timelineDuration} * 4.166% + 2px)` }}>
                 <div className="selected-hour" />
                 <div className="duration-container">
                     {achievement.timeDone}

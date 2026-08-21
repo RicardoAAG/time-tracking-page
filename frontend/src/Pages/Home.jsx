@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import DayTimeline from '../Components/DayTimeline.jsx'
 import '../Styles/Home.css';
 import CreateNewAchievement from "../Components/CreateNewAchievement.jsx";
+import NewAchievementForm from "../Components/NewAchievementForm.jsx";
 
 function Home() {
   const [activities, setActivities] = useState([]);
@@ -10,6 +11,7 @@ function Home() {
   const [offset, setOffset] = useState(0);
   const [isStart, setIsStart] = useState(true)
   const startIndex = 0;
+  const [newAchievement, setNewAchievement] = useState(false)
 
   const getDayLabel = (daysAgo) => {
     const date = new Date();
@@ -60,27 +62,33 @@ function Home() {
 
   return (
     <div className="carousel-wrapper">
-      <button className="navigation-button" onClick={() => { handlePrev() }}>
+      <button className="navigation-button" onClick={() => { handlePrev(); setNewAchievement(false) }}>
         &#10094; Prev
       </button>
       <div className="carousel-container">
-        {/* {getVisibleItems().map((dates) => ( */}
-        <DayTimeline timelineDate={dates[0]} />
-        <DayTimeline timelineDate={dates[1]} />
+        {newAchievement ? (
+          <>
+            <NewAchievementForm />
+          </>
+        ) : (
+          <>
+            <DayTimeline timelineDate={dates[0]} />
+            <DayTimeline timelineDate={dates[1]} />
+          </>
+        )}
         {isStart && (
-          <DayTimeline timelineDate={dates[2]} isStart={true} isStartTimer={startTimer}/>
+          <DayTimeline timelineDate={dates[2]} isStart={true} isStartTimer={startTimer} />
         )}
         {!isStart && (
           <DayTimeline timelineDate={dates[2]} />
         )}
-        {/* ))}*/}
       </div>
       {!isStart ? (
-        <button className="navigation-button" onClick={handleNext}>
+        <button className="navigation-button" onClick={() => handleNext()}>
           Next &#10095;
         </button>
       ) : (
-        <CreateNewAchievement onThisStart={() => setStartTimer(true)} onThisStop={() => setStartTimer(false)}/>
+        <CreateNewAchievement onThisStart={() => setStartTimer(true)} onThisStop={() => { setStartTimer(false); setNewAchievement(true) }} />
       )}
     </div>
   )

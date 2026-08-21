@@ -1,5 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSingleton<IActivityRepository, ActivityRepository>();
+
 // --- CONFIGURACIÓN DE SERVICIOS ---
 
 // Soporte para Controladores y documentación Swagger

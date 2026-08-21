@@ -21,7 +21,7 @@
 .hour-row {
   display: grid;
   grid-template-columns: 70px 1fr;
-  min-height: 48px;
+  min-height: 3.4vh;
   border-bottom: 1px solid #e0e0e0;
 }
 
